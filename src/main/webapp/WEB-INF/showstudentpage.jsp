@@ -4,19 +4,33 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Employee Roles
+         Demo Page for Customer Roles
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
+
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a EMPLOYEE of our wonderful site.
+
+        Her er en liste med alle studerende:
+
+        <table class="table table-striped">
+            <c:forEach var="student" items="${requestScope.studentList}">
 
 
+                <tr>
+                    <td>${student.id}</td>
+                    <td>${student.email}</td>
+                </tr>
 
-        <a href="${pageContext.request.contextPath}/fc/showstudents">Vis alle studerende</a>
 
-        <a href="${pageContext.request.contextPath}/fc/showitems">Vis alt udstyr</a>
+    </c:forEach>
+
+
+        </table>
+
 
     </jsp:body>
+
 </t:genericpage>
+
