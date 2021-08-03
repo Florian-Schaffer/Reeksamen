@@ -21,7 +21,7 @@
                 <p>Dato: ${bookedItems.bookingDate}. Lånedage: ${bookedItems.days}. status: ${bookedItems.bookingStatus}
                     </c:forEach>
                     </c:if>
-                    <a class = "btn btn-primary" href="${pageContext.request.contextPath}/fc/employeepage"><btn-text> Tilbage </btn-text> </a>
+                    <a class = "btn btn-primary" href="${pageContext.request.contextPath}/fc/adminpage"><btn-text> Tilbage </btn-text> </a>
 
 
         </table>

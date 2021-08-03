@@ -18,7 +18,7 @@ public class BookingFacade {
         return bookingMapper.getBookedItems();
     }
 
-    public void studentBooking(Booking booking, User user, String email, String password) throws  UserException{
-        bookingMapper.StudentBooking(booking, user,email, password );
+    public void studentBooking(String email, String password) throws  UserException{
+        bookingMapper.StudentBooking( email, password );
     }
 }

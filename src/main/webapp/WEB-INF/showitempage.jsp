@@ -16,7 +16,7 @@
 
         <table class="table table-striped">
             <c:if test = "${sessionScope.role == 'admin'}">
-                <form action ="${pageContext.request.contextPath}/fc/showitem" method="POST">
+                <form action ="${pageContext.request.contextPath}/fc/ShowItemsCommand" method="POST">
                  <c:forEach var = "itemList" items="${requestScope.itemList}">
                     <p>Navnet: ${itemList.name}. Beskrivelse: ${itemList.description}. Id'et: ${itemList.id}. Lokation: ${itemList.roomNumber}
                      </c:forEach>

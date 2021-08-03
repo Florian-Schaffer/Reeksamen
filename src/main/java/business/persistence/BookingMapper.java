@@ -12,6 +12,7 @@ import java.util.List;
 public class BookingMapper {
     Database database;
     Booking booking;
+    User user;
 
     public BookingMapper (Database database){
         this.database = database;
@@ -37,7 +38,9 @@ public class BookingMapper {
                     int itemId = rs.getInt ("Item_itemID");
 
                     Booking booking = new Booking(bookingID,date,days,comment,bookingStatus,studentId,itemId);
-                    bookedItems.add(booking);
+                    if(bookingStatus=="booked"){
+                        bookedItems.add(booking);
+                    }
                 }
             }
             catch (SQLException ex) {
@@ -50,7 +53,7 @@ public class BookingMapper {
         return bookedItems;
     }
 
-    public void StudentBooking(Booking booking, User user, String email, String password) throws UserException{
+    public void StudentBooking( String email, String password) throws UserException{
         try (Connection connection = database.connect()){
             String SQL = "SELECT 'id' FROM 'user' WHERE email = ? AND password = ?";
             try (PreparedStatement ps = connection.prepareStatement(SQL)) {
@@ -66,7 +69,6 @@ public class BookingMapper {
         catch (SQLException sqlException){
             sqlException.printStackTrace();
         }
-
         try (Connection connection = database.connect()){
             String SQL = "INSERT INTO 'Booking' (bookingID, booking_date, days, comment, booking_status, Student_id, Item_itemID) VALUES (?,?,?,?,?,?,?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS)){
