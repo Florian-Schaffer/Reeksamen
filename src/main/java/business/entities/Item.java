@@ -2,16 +2,17 @@ package business.entities;
 
 public class Item {
 
-
     String name;
     String description;
     int id;
+    int roomNumber;
 
 
-    public Item(String name, String description, int id){
+    public Item(String name, String description, int id, int roomNumber){
         this.description = description;
         this.name = name;
         this.id = id;
+        this.roomNumber = roomNumber;
     }
 
     public void setName(String name) {
@@ -37,5 +38,12 @@ public class Item {
 
     public int getId() {
         return id;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+    public void setRoomNumber(int roomNumber){
+        this.roomNumber=roomNumber;
     }
 }

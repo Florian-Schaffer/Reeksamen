@@ -1,79 +1,70 @@
 package business.persistence;
 
+import business.entities.Booking;
 import business.exceptions.UserException;
 import business.entities.User;
 
 import java.sql.*;
 
-public class UserMapper
-{
+public class UserMapper {
     private Database database;
 
-    public UserMapper(Database database)
-    {
+    public UserMapper(Database database) {
         this.database = database;
     }
 
-    public void createUser(User user) throws UserException
-    {
-        try (Connection connection = database.connect())
-        {
-            String sql = "INSERT INTO users (email, password, role) VALUES (?, ?, ?)";
+    public void createUser(User user) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "INSERT INTO users (id, email, name, phone, role, password) VALUES (?, ?, ?, ?, ?)";
 
-            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
-            {
-                ps.setString(1, user.getEmail());
-                ps.setString(2, user.getPassword());
-                ps.setString(3, user.getRole());
-                ps.executeUpdate();
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
                 ResultSet ids = ps.getGeneratedKeys();
                 ids.next();
                 int id = ids.getInt(1);
                 user.setId(id);
-            }
-            catch (SQLException ex)
-            {
+
+                ps.setInt(1, id);
+                ps.setString(2, user.getEmail());
+                ps.setString(3, user.getName());
+                ps.setInt(4, user.getPhone());
+                ps.setString(5, user.getRole());
+                ps.setString(6, user.getPassword());
+                ps.executeUpdate();
+
+            } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
-        }
-        catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             throw new UserException(ex.getMessage());
         }
     }
 
-    public User login(String email, String password) throws UserException
-    {
-        try (Connection connection = database.connect())
-        {
-            String sql = "SELECT id, role FROM users WHERE email=? AND password=?";
+    public User login(String email, String password) throws UserException {
+        try (Connection connection = database.connect()) {
+            String sql = "SELECT id, role, name FROM users WHERE email=? AND password=?";
 
-            try (PreparedStatement ps = connection.prepareStatement(sql))
-            {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, email);
                 ps.setString(2, password);
                 ResultSet rs = ps.executeQuery();
-                if (rs.next())
-                {
+                if (rs.next()) {
                     String role = rs.getString("role");
+                    String name = rs.getString("name");
                     int id = rs.getInt("id");
-                    User user = new User(email, password, role);
+                    User user = new User(email, password, role, name);
                     user.setId(id);
                     return user;
-                } else
-                {
+                } else {
                     throw new UserException("Could not validate user");
                 }
-            }
-            catch (SQLException ex)
-            {
+            } catch (SQLException ex) {
                 throw new UserException(ex.getMessage());
             }
-        }
-        catch (SQLException ex)
-        {
+        } catch (SQLException ex) {
             throw new UserException("Connection to database could not be established");
         }
-    }
 
+    }
 }
+
+

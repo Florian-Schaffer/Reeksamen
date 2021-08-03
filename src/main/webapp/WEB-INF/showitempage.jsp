@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Customer Roles
+         Se alle items
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -15,16 +15,13 @@
         Her er en liste med alt udstyr:
 
         <table class="table table-striped">
-            <c:forEach var="item" items="${requestScope.itemList}">
-
-
-                <tr>
-                    <td>${item.name}</td>
-                    <td>${item.id}</td>
-                </tr>
-
-
-    </c:forEach>
+            <c:if test = "${sessionScope.role == 'admin'}">
+                <form action ="${pageContext.request.contextPath}/fc/showitem" method="POST">
+                 <c:forEach var = "itemList" items="${requestScope.itemList}">
+                    <p>Navnet: ${itemList.name}. Beskrivelse: ${itemList.description}. Id'et: ${itemList.id}. Lokation: ${itemList.roomNumber}
+                     </c:forEach>
+            </c:if>
+                        <a class = "btn btn-primary" href="${pageContext.request.contextPath}/fc/adminpage"><btn-text> Tilbage </btn-text> </a>
 
 
         </table>

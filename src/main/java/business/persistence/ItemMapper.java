@@ -1,6 +1,7 @@
 package business.persistence;
 
 import business.entities.Item;
+import business.entities.Booking;
 import business.exceptions.UserException;
 
 import java.sql.Connection;
@@ -18,26 +19,25 @@ public class ItemMapper {
         this.database = database;
     }
 
+    public List<Item> allItems() throws UserException{
 
-
-    public List<Item> getAllItems() throws UserException{
-
-        List<Item> itemList = new ArrayList<>();
+        List<Item> allItems = new ArrayList<>();
 
         try(Connection connection = database.connect()){
-          String sql = "SELECT * FROM items";
+          String sql = "SELECT * FROM 'Item'";
 
           try(PreparedStatement ps= connection.prepareStatement(sql)){
 
               ResultSet rs = ps.executeQuery();
-              while(rs.next()){
+              {
                   String name = rs.getString("item_name");
                   String description = rs.getString("description");
                   int id = rs.getInt("item_id");
+                  int roomNumber = rs.getInt("Room_room_number");
 
-                  Item item = new Item(name, description, id);
+                  Item item = new Item(name, description, id, roomNumber);
                   item.setId(id);
-                  itemList.add(item);
+                  allItems.add(item);
 
               }
           }
@@ -51,7 +51,7 @@ public class ItemMapper {
         }
 
 
-        return itemList;
+        return allItems;
     }
 
 }
