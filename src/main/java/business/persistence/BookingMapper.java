@@ -23,7 +23,7 @@ public class BookingMapper {
         List<Booking> bookedItems = new ArrayList<>();
 
         try(Connection connection = database.connect()){
-            String sql = "SELECT * FROM 'Booking'";
+            String sql = "SELECT * FROM booking";
 
             try(PreparedStatement ps= connection.prepareStatement(sql)){
 
@@ -55,7 +55,7 @@ public class BookingMapper {
 
     public void StudentBooking( String email, String password) throws UserException{
         try (Connection connection = database.connect()){
-            String SQL = "SELECT 'id' FROM 'user' WHERE email = ? AND password = ?";
+            String SQL = "SELECT id FROM user WHERE email = ? AND password = ?";
             try (PreparedStatement ps = connection.prepareStatement(SQL)) {
                 ps.setString(1, email);
                 ps.setString(2, password);
@@ -70,7 +70,7 @@ public class BookingMapper {
             sqlException.printStackTrace();
         }
         try (Connection connection = database.connect()){
-            String SQL = "INSERT INTO 'Booking' (bookingID, booking_date, days, comment, booking_status, Student_id, Item_itemID) VALUES (?,?,?,?,?,?,?)";
+            String SQL = "INSERT INTO booking (bookingID, booking_date, days, comment, booking_status, Student_id, Item_itemID) VALUES (?,?,?,?,?,?,?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS)){
                 ResultSet ids = preparedStatement.getGeneratedKeys();
                 ids.next();

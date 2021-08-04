@@ -31,7 +31,7 @@ public abstract class Command
         commands.put("showstudentpage", new ShowStudentsCommand("showstudentpage","admin"));
         commands.put("showitempage", new ShowItemsCommand("showitempage", "admin"));
         commands.put("bookeditemspage", new SeeBookedItemsCommand("bookeditemspage","admin"));
-        commands.put("registerstudentpage", new RegisterStudentCommand("registerstudentpage","admin"));
+        //commands.put("registerstudentpage", new RegisterStudentCommand("registerstudentpage","admin"));
         commands.put("bookingpage", new CommandProtectedPage("bookingpage", "student"));
     }
 

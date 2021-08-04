@@ -42,10 +42,7 @@ public class FrontController extends HttpServlet
 
     }
 
-    protected void processRequest(
-            HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException
     {
         try
         {

@@ -34,16 +34,23 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-1 col-form-label" for="email">Full Name</label>
+                    <label class="col-sm-1 col-form-label" for="name">Full Name</label>
                     <div class="col-sm-4">
                         <input id="name" class="form-control" type="text" name="name" value="${param.name}" placeholder="Your name">
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-1 col-form-label" for="email">Phone Nr.</label>
+                    <label class="col-sm-1 col-form-label" for="phone">Phone Nr.</label>
                     <div class="col-sm-4">
                         <input id="phone" class="form-control" type="text" name="phone" value="${param.phone}" placeholder="Enter a phone number">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-1 col-form-label" for="role">Role.</label>
+                    <div class="col-sm-4">
+                        <input id="role" class="form-control" type="text" name="role" value="${param.role}" placeholder="Choose a role">
                     </div>
                 </div>
 

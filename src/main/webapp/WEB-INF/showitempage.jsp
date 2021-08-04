@@ -13,25 +13,20 @@
         <h1>Hello ${sessionScope.email} </h1>
 
         Her er en liste med alt udstyr:
-        <c:if test = "${sessionScope.role == 'admin'}">
+
         <table class="table table-striped">
+        <c:if test = "${sessionScope.role == 'admin'}">
+            <form action ="${pageContext.request.contextPath}/fc/ShowItemsCommand" method="POST">
+                 <c:forEach var = "allItems" items="${requestScope.allItems}">
+                <p>Item id: ${allItems.id}. Navn: ${allItems.name}. Beskrivelse. ${allItems.description}. Lokale ${allItems.roomNumber}
+                </p>
+                 </c:forEach>
+        </c:if>
 
 
-                 <c:forEach var = "item" items="${requestScope.itemList}">
-
-                     <tr>
-                         <td>${item.id}</td>
-                         <td>${item.description}</td>
-                         <td>${item.name}</td>
-                         <td>${item.roomNumber}</td>
-                         <td>${item.status}</td>
-                     </tr>
-
-                     </c:forEach>
 
 
         </table>
-    </c:if>
         <a class = "btn btn-primary" href="${pageContext.request.contextPath}/fc/adminpage"><btn-text> Tilbage </btn-text> </a>
 
 

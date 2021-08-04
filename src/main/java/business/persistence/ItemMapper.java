@@ -17,18 +17,21 @@ public class ItemMapper {
         this.database = database;
     }
 
+
+
+
     public List<Item> allItems() throws UserException{
 
         List<Item> allItems = new ArrayList<>();
 
         try(Connection connection = database.connect()){
-          String sql = "SELECT * FROM 'item'";
+          String sql = "SELECT * FROM item";
 
           try(PreparedStatement ps= connection.prepareStatement(sql)){
 
               ResultSet rs = ps.executeQuery();
               {
-                  String id = rs.getString("item_id");
+                  String id = rs.getString("itemID");
                   String name = rs.getString("item_name");
                   String description = rs.getString("description");
                   int roomNumber = rs.getInt("Room_room_number");
@@ -75,15 +78,15 @@ public class ItemMapper {
 
     public Item findItem(String string) throws UserException{
         try (Connection connection = database.connect()) {
-            String sql = "SELECT itemID, name, description, Room_room_number FROM item WHERE itemID=?";
+            String sql = "SELECT itemID, item_name, description, Room_room_number FROM item WHERE itemID=?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, string);
                 ResultSet rs = ps.executeQuery();
                 if (rs.next()) {
-                    String itemID = rs.getString("role");
-                    String name = rs.getString("name");
-                    String description = rs.getString("id");
+                    String itemID = rs.getString("itemID");
+                    String name = rs.getString("item_name");
+                    String description = rs.getString("description");
                     int roomNumber = rs.getInt("Room_room_number");
                     Item item = new Item(itemID,name, description, roomNumber);
                     return item;

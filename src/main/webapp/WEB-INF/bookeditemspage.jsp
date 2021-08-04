@@ -12,7 +12,7 @@
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
 
-        Her er en liste med alt udstyr:
+        Her er en liste med alt booket udstyr:
 
         <table class="table table-striped">
             <c:if test = "${sessionScope.role == 'admin'}">

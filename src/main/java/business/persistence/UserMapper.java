@@ -27,7 +27,7 @@ public class UserMapper {
                 ps.setString(2, user.getEmail());
                 ps.setString(3, user.getName());
                 ps.setInt(4, user.getPhone());
-                ps.setString(5, user.getRole());
+                ps.setString(5, "student");
                 ps.setString(6, user.getPassword());
                 ps.executeUpdate();
 
@@ -41,7 +41,7 @@ public class UserMapper {
 
     public User login(String email, String password) throws UserException {
         try (Connection connection = database.connect()) {
-            String sql = "SELECT id, role, name FROM user WHERE email=? AND password=?";
+            String sql = "SELECT id, role, name, phone FROM user WHERE email=? AND password=?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, email);
@@ -51,7 +51,8 @@ public class UserMapper {
                     String role = rs.getString("role");
                     String name = rs.getString("name");
                     int id = rs.getInt("id");
-                    User user = new User(email, password, role, name);
+                    int phone = rs.getInt("phone");
+                    User user = new User(email, name, phone, role, password);
                     user.setId(id);
                     return user;
                 } else {

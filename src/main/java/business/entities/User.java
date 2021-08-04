@@ -3,9 +3,9 @@ package business.entities;
 public class User
 {
 
-    public User(int id, String email, String name, int phone, String role, String password)
+    public User(String email, String name, int phone, String role, String password)
     {
-        this.id = id;
+
         this.email = email;
         this.name = name;
         this.phone = phone;
@@ -13,13 +13,13 @@ public class User
         this.role = role;
     }
 
-    public User(String email, String password, String role, String name)
+    /*public User(String email, String password, String role, String name)
     {
         this.email = email;
         this.password = password;
         this.role = role;
         this.name = name;
-    }
+    }*/
 
     private int id; // just used to demo retrieval of autogen keys in UserMapper
     private String email;

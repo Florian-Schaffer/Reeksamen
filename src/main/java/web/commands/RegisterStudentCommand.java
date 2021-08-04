@@ -1,5 +1,7 @@
-package web.commands;
 
+
+package web.commands;
+/*
 import business.entities.User;
 import business.exceptions.UserException;
 import business.services.StudentFacade;
@@ -43,3 +45,4 @@ public class RegisterStudentCommand extends CommandProtectedPage {
         }
     }
 }
+*/

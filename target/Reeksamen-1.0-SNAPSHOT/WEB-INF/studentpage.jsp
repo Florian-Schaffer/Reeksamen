@@ -4,15 +4,25 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Customer Roles
+         Demo Page for Students
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
 
     <jsp:body>
         <h1>Hello ${sessionScope.email} </h1>
-        You are now logged in as a Customer of our wonderful site.
-        Role: ${sessionScope.role}
+        You are now logged in as a Student on our booking site.
+
+
+        <a href="${pageContext.request.contextPath}/fc/studentcurrencypage">Vis mine point.</a>
+
+        <a href="${pageContext.request.contextPath}/fc/bookingpage">Book udstyr.</a>
+
+
+
+
+
+
     </jsp:body>
 
 </t:genericpage>
