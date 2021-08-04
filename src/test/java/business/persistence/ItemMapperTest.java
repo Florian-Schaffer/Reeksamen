@@ -60,8 +60,4 @@ class ItemMapperTest {
     }
 
 
-    @Test
-    void allItems() {
-
-    }
 }
