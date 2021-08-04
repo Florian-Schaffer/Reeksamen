@@ -18,7 +18,7 @@
             <c:if test = "${sessionScope.role == 'admin'}">
                 <form action ="${pageContext.request.contextPath}/fc/ShowItemsCommand" method="POST">
                  <c:forEach var = "itemList" items="${requestScope.itemList}">
-                    <p>Navnet: ${itemList.name}. Beskrivelse: ${itemList.description}. Id'et: ${itemList.id}. Lokation: ${itemList.roomNumber}
+                    <p>Id'et: ${itemList.id}. Navnet: ${itemList.name}. Beskrivelse: ${itemList.description}.  Lokation: ${itemList.roomNumber}
                      </c:forEach>
             </c:if>
                         <a class = "btn btn-primary" href="${pageContext.request.contextPath}/fc/adminpage"><btn-text> Tilbage </btn-text> </a>

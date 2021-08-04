@@ -35,10 +35,10 @@ public class UserMapperTest {
 
             // reset test database
             try ( Statement stmt = database.connect().createStatement() ) {
-                stmt.execute("drop table if exists users" );
-                stmt.execute("create table " + TESTDATABASE + ".users LIKE " + DATABASE + ".users;" );
+                stmt.execute("drop table if exists user" );
+                stmt.execute("create table " + TESTDATABASE + ".user LIKE " + DATABASE + ".user;" );
                 stmt.execute(
-                    "insert into users values " +
+                    "insert into user values " +
                     "(1,'jens@somewhere.com','jensen','12345678','student','vaniljecreme'), " +
                     "(2,'ken@somewhere.com','kensen','65423179','student','hamster'), " +
                     "(3,'robin@somewhere.com','batman','68686868','admin','superhelt')");

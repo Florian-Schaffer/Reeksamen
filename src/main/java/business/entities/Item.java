@@ -4,11 +4,11 @@ public class Item {
 
     String name;
     String description;
-    int id;
+    String id;
     int roomNumber;
 
 
-    public Item(String name, String description, int id, int roomNumber){
+    public Item(String id, String name, String description, int roomNumber){
         this.description = description;
         this.name = name;
         this.id = id;
@@ -23,7 +23,7 @@ public class Item {
         this.description = description;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -36,7 +36,7 @@ public class Item {
         return description;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
