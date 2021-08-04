@@ -22,7 +22,7 @@ public class ItemMapper {
         List<Item> allItems = new ArrayList<>();
 
         try(Connection connection = database.connect()){
-          String sql = "SELECT * FROM 'Item'";
+          String sql = "SELECT * FROM 'item'";
 
           try(PreparedStatement ps= connection.prepareStatement(sql)){
 

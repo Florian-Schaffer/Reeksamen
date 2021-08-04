@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Se alle items
+         Liste over alt udstyr
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -13,18 +13,26 @@
         <h1>Hello ${sessionScope.email} </h1>
 
         Her er en liste med alt udstyr:
-
+        <c:if test = "${sessionScope.role == 'admin'}">
         <table class="table table-striped">
-            <c:if test = "${sessionScope.role == 'admin'}">
-                <form action ="${pageContext.request.contextPath}/fc/ShowItemsCommand" method="POST">
-                 <c:forEach var = "itemList" items="${requestScope.itemList}">
-                    <p>Id'et: ${itemList.id}. Navnet: ${itemList.name}. Beskrivelse: ${itemList.description}.  Lokation: ${itemList.roomNumber}
+
+
+                 <c:forEach var = "item" items="${requestScope.itemList}">
+
+                     <tr>
+                         <td>${item.id}</td>
+                         <td>${item.description}</td>
+                         <td>${item.name}</td>
+                         <td>${item.roomNumber}</td>
+                         <td>${item.status}</td>
+                     </tr>
+
                      </c:forEach>
-            </c:if>
-                        <a class = "btn btn-primary" href="${pageContext.request.contextPath}/fc/adminpage"><btn-text> Tilbage </btn-text> </a>
 
 
         </table>
+    </c:if>
+        <a class = "btn btn-primary" href="${pageContext.request.contextPath}/fc/adminpage"><btn-text> Tilbage </btn-text> </a>
 
 
     </jsp:body>

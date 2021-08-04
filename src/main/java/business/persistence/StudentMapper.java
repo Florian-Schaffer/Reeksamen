@@ -22,7 +22,7 @@ public class StudentMapper {
     public List<User> getAllStudents() throws UserException {
         List<User> studentList = new ArrayList<>();
         try (Connection connection = database.connect()) {
-            String sql = "SELECT * FROM users WHERE role='student'";
+            String sql = "SELECT * FROM user WHERE role='student'";
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {

@@ -4,7 +4,7 @@
 
 <t:genericpage>
     <jsp:attribute name="header">
-         Demo Page for Customer Roles
+         Liste over alle studerende
     </jsp:attribute>
     <jsp:attribute name="footer">
     </jsp:attribute>
@@ -21,6 +21,8 @@
                 <tr>
                     <td>${student.id}</td>
                     <td>${student.email}</td>
+                    <td>${student.name}</td>
+                    <td>${student.phone}</td>
                 </tr>
 
 
@@ -29,6 +31,8 @@
 
         </table>
 
+
+        <a class = "btn btn-primary" href="${pageContext.request.contextPath}/fc/adminpage"><btn-text> Tilbage </btn-text> </a>
 
     </jsp:body>
 

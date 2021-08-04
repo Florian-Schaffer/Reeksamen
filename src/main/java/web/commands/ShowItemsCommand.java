@@ -23,7 +23,6 @@ public class ShowItemsCommand extends CommandProtectedPage {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws UserException {
-        //List<Item> allItems = itemFacade.getAllItems();
         request.setAttribute("itemList", itemFacade.getAllItems());
         return pageToShow;
     }

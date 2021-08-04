@@ -14,9 +14,11 @@
 
 
 
-        <a href="${pageContext.request.contextPath}/fc/showstudents">Vis alle studerende</a>
+        <a href="${pageContext.request.contextPath}/fc/showstudentpage">Vis alle studerende.</a>
 
-        <a href="${pageContext.request.contextPath}/fc/showitems">Vis alt udstyr</a>
+        <a href="${pageContext.request.contextPath}/fc/showitempage">Vis alt udstyr.</a>
+
+        <a href="${pageContext.request.contextPath}/fc/registerpage">Opret ny bruger.</a>
 
     </jsp:body>
 </t:genericpage>

@@ -7,8 +7,8 @@ CREATE DATABASE  IF NOT EXISTS `startcode`;
 
 USE `startcode`;
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE `users` (
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(90) NOT NULL,
   `password` varchar(45) NOT NULL,
@@ -17,8 +17,8 @@ CREATE TABLE `users` (
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
-LOCK TABLES `users` WRITE;
-INSERT INTO `users` VALUES 
+LOCK TABLES `user` WRITE;
+INSERT INTO `user` VALUES
 (1,'barbie@world.dk','jensen','student'),
 (2,'ken@world.com','jensen','student'),
 (3,'robin@gotham.com','batman','admin');
