@@ -25,13 +25,13 @@ public class ItemMapper {
         List<Item> allItems = new ArrayList<>();
 
         try(Connection connection = database.connect()){
-          String sql = "SELECT * FROM item";
+          String sql = "SELECT * FROM Item";
 
           try(PreparedStatement ps= connection.prepareStatement(sql)){
 
               ResultSet rs = ps.executeQuery();
               {
-                  String id = rs.getString("itemID");
+                  String id = rs.getString("ItemID");
                   String name = rs.getString("item_name");
                   String description = rs.getString("description");
                   int roomNumber = rs.getInt("Room_room_number");
@@ -57,7 +57,7 @@ public class ItemMapper {
 
     public void createItem(Item item) throws UserException{
         try (Connection connection = database.connect()) {
-            String sql = "INSERT INTO item (itemID, item_name, description, Room_room_number) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO Item (ItemID, item_name, description, Room_room_number) VALUES (?, ?, ?, ?)";
 
             try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -78,7 +78,7 @@ public class ItemMapper {
 
     public Item findItem(String string) throws UserException{
         try (Connection connection = database.connect()) {
-            String sql = "SELECT itemID, item_name, description, Room_room_number FROM item WHERE itemID=?";
+            String sql = "SELECT ItemID, item_name, description, Room_room_number FROM Item WHERE ItemID=?";
 
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, string);
