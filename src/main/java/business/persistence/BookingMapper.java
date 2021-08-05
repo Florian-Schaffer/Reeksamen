@@ -23,24 +23,22 @@ public class BookingMapper {
         List<Booking> bookedItems = new ArrayList<>();
 
         try(Connection connection = database.connect()){
-            String sql = "SELECT * FROM Booking";
+            String sql = "SELECT * FROM booking";
 
-            try(PreparedStatement ps= connection.prepareStatement(sql)){
+            try(PreparedStatement ps = connection.prepareStatement(sql)){
 
                 ResultSet rs = ps.executeQuery();
-                while(rs.next()){
+                if(rs.next()){
                     int bookingID = rs.getInt("bookingID");
                     String date = rs.getString("booking_date");
                     int days = rs.getInt("days");
                     String comment = rs.getString ("comment");
                     String bookingStatus = rs.getString ("booking_status");
-                    int studentId = rs.getInt ("Student_id");
+                    int studentId = rs.getInt ("User_id");
                     int itemId = rs.getInt ("Item_itemID");
 
                     Booking booking = new Booking(bookingID,date,days,comment,bookingStatus,studentId,itemId);
-                    if(bookingStatus=="booked"){
-                        bookedItems.add(booking);
-                    }
+                    bookedItems.add(booking);
                 }
             }
             catch (SQLException ex) {
@@ -55,7 +53,7 @@ public class BookingMapper {
 
     public void StudentBooking( String email, String password) throws UserException{
         try (Connection connection = database.connect()){
-            String SQL = "SELECT userID FROM User WHERE email = ? AND password = ?";
+            String SQL = "SELECT id FROM user WHERE email = ? AND password = ?";
             try (PreparedStatement ps = connection.prepareStatement(SQL)) {
                 ps.setString(1, email);
                 ps.setString(2, password);
@@ -70,7 +68,7 @@ public class BookingMapper {
             sqlException.printStackTrace();
         }
         try (Connection connection = database.connect()){
-            String SQL = "INSERT INTO Booking (bookingID, booking_date, days, comment, booking_status, User_userID, Item_ItemID) VALUES (?,?,?,?,?,?,?)";
+            String SQL = "INSERT INTO booking (bookingID, booking_date, days, comment, booking_status, User_id, Item_itemID) VALUES (?,?,?,?,?,?,?)";
             try (PreparedStatement preparedStatement = connection.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS)){
                 ResultSet ids = preparedStatement.getGeneratedKeys();
                 ids.next();
