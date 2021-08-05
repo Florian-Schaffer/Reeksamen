@@ -15,12 +15,12 @@
         Her er en liste med alt booket udstyr:
 
         <table class="table table-striped">
-            <c:if test = "${sessionScope.role == 'admin'}">
-            <form action ="${pageContext.request.contextPath}/fc/SeeBookedItemsCommand" method="POST">
-                <c:forEach var = "bookedItems" items="${requestScope.bookedItems}">
-                <p>Id'et: ${bookedItems.id}. Navnet: ${bookedItems.name}. Dato: ${bookedItems.bookingDate}. Lånedage: ${bookedItems.days}. status: ${bookedItems.bookingStatus}
+
+            <%--<form action ="${pageContext.request.contextPath}/fc/SeeBookedItemsCommand" method="POST">--%>
+                <c:forEach var = "itemsBooked" items="${requestScope.bookedItems}">
+                <p>Id'et: ${itemsBooked.bookingID}. ItemID: ${itemsBooked.itemId}. Dato: ${itemsBooked.bookingDate}. Lånedage: ${itemsBooked.days}. status: ${itemsBooked.bookingStatus}
                     </c:forEach>
-                    </c:if>
+
                     <a class = "btn btn-primary" href="${pageContext.request.contextPath}/fc/adminpage"><btn-text> Tilbage </btn-text> </a>
 
 

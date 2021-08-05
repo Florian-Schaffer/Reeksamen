@@ -40,9 +40,7 @@ public class ItemMapper {
                   allItems.add(item);
 
               }
-              else{
-                  System.out.println("There are no items");
-              }
+
           }
           catch (SQLException ex) {
               throw new UserException(ex.getMessage());

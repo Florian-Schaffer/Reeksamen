@@ -8,9 +8,9 @@ public class Booking {
     String comment;
     String bookingStatus;
     int studentId;
-    int itemId;
+    String itemId;
 
-    public Booking(int bookingID, String bookingDate, int days, String comment, String bookingStatus, int studentId, int itemId){
+    public Booking(int bookingID, String bookingDate, int days, String comment, String bookingStatus, int studentId, String itemId){
         this.bookingID = bookingID;
         this.bookingDate = bookingDate;
         this.days = days;
@@ -44,7 +44,7 @@ public class Booking {
         return studentId;
     }
 
-    public int getItemId() {
+    public String getItemId() {
         return itemId;
     }
 
@@ -68,7 +68,7 @@ public class Booking {
         this.bookingStatus = bookingStatus;
     }
 
-    public void setItemId(int itemId) {
+    public void setItemId(String itemId) {
         this.itemId = itemId;
     }
 

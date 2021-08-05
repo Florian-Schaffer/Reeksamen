@@ -15,15 +15,16 @@
         Her er en liste med alt udstyr:
 
         <table class="table table-striped">
-        <c:if test = "${sessionScope.role == 'admin'}">
-            <form action ="${pageContext.request.contextPath}/fc/ShowItemsCommand" method="POST">
-                 <c:forEach var = "allItems" items="${requestScope.allItems}">
-                <p>Item id: ${allItems.id}. Navn: ${allItems.name}. Beskrivelse. ${allItems.description}. Lokale ${allItems.roomNumber}
-                </p>
+
+            <%--<form action ="${pageContext.request.contextPath}/fc/ShowItemsCommand" method="POST"> --%>
+                 <c:forEach var = "item" items="${requestScope.itemList}">
+                <tr>
+                    <td>Item id: ${item.id}.</td>
+                    <td>Navn: ${item.name}.</td>
+                    <td>Beskrivelse. ${item.description}.</td>
+                    <td>Lokale ${item.roomNumber}</td>
+                </tr>
                  </c:forEach>
-        </c:if>
-
-
 
 
         </table>

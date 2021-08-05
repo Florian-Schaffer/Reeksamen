@@ -30,14 +30,14 @@ public class BookingMapper {
                 ResultSet rs = ps.executeQuery();
                 if(rs.next()){
                     int bookingID = rs.getInt("bookingID");
-                    String date = rs.getString("booking_date");
+                    String bookingDate = rs.getString("booking_date");
                     int days = rs.getInt("days");
                     String comment = rs.getString ("comment");
                     String bookingStatus = rs.getString ("booking_status");
                     int studentId = rs.getInt ("User_id");
-                    int itemId = rs.getInt ("Item_itemID");
+                    String itemId = rs.getString ("Item_itemID");
 
-                    Booking booking = new Booking(bookingID,date,days,comment,bookingStatus,studentId,itemId);
+                    Booking booking = new Booking(bookingID,bookingDate,days,comment,bookingStatus,studentId,itemId);
                     bookedItems.add(booking);
                 }
             }
@@ -80,7 +80,7 @@ public class BookingMapper {
                 preparedStatement.setString(4,booking.getComment());
                 preparedStatement.setString(5,booking.getComment());
                 preparedStatement.setInt(6,user.getId());
-                preparedStatement.setInt(7,booking.getItemId());
+                preparedStatement.setString(7,booking.getItemId());
             }
 
         } catch (SQLException ex) {
